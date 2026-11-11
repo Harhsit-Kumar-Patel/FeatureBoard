@@ -1,0 +1,16 @@
+{
+  "name": "featureboard",
+  "version": "1.0.0",
+  "description": "A lightweight product-management application",
+  "main": "server.js",
+  "scripts": {
+    "start": "php -S localhost:3000 router.php"
+  },
+  "dependencies": {
+    "better-sqlite3": "^11.3.0",
+    "express": "^4.19.2"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

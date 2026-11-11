@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FeatureBoard - Product Roadmap Workspace</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Modern clean font selection -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Full Width App Header -->
+  <header class="app-header">
+    <div class="header-container">
+      <div class="brand">
+        <svg class="brand-logo" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="3" y="3" width="18" height="18" rx="4" stroke="currentColor" stroke-width="2.5"/>
+          <path d="M9 3V21" stroke="currentColor" stroke-width="2.5"/>
+          <path d="M15 3V21" stroke="currentColor" stroke-width="2.5"/>
+          <path d="M3 9H21" stroke="currentColor" stroke-width="2.5"/>
+        </svg>
+        <span class="brand-name">FeatureBoard</span>
+        <span class="version-badge">v1.2</span>
+      </div>
+      
+      <button id="add-feature-btn" class="btn btn-indigo">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="btn-icon">
+          <line x1="12" y1="5" x2="12" y2="19"></line>
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+        </svg>
+        Add Feature Idea
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Unified Workspace Dashboard -->
+  <main class="dashboard-container">
+    
+    <!-- Horizontal Project Switcher Section -->
+    <section class="project-tabs-section" aria-label="Select Project">
+      <h3 class="tabs-label">Active Project Workspace</h3>
+      <div class="project-tabs" id="project-tabs-list">
+        <!-- Project Tabs buttons injected here dynamically -->
+      </div>
+    </section>
+
+    <!-- Dashboard Statistics (Compact horizontal badging layout) -->
+    <section class="stats-metrics-bar" aria-label="Project Statistics Summary">
+      <div class="metric-badge" data-stat="total">
+        <span class="metric-label">All features:</span>
+        <span class="metric-val" id="stat-total">0</span>
+      </div>
+      <div class="metric-separator">·</div>
+      <div class="metric-badge" data-stat="backlog">
+        <span class="metric-label">Backlog:</span>
+        <span class="metric-val" id="stat-backlog">0</span>
+      </div>
+      <div class="metric-separator">·</div>
+      <div class="metric-badge" data-stat="planned">
+        <span class="metric-label">Planned:</span>
+        <span class="metric-val" id="stat-planned">0</span>
+      </div>
+      <div class="metric-separator">·</div>
+      <div class="metric-badge" data-stat="in-progress">
+        <span class="metric-label">In Progress:</span>
+        <span class="metric-val" id="stat-in-progress">0</span>
+      </div>
+      <div class="metric-separator">·</div>
+      <div class="metric-badge" data-stat="released">
+        <span class="metric-label">Released:</span>
+        <span class="metric-val" id="stat-released">0</span>
+      </div>
+    </section>
+
+    <!-- Filter Controls Toolbar -->
+    <section class="controls-toolbar" aria-label="Search and Filters">
+      <div class="search-field">
+        <svg class="search-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input type="text" id="search-input" placeholder="Search roadmap features...">
+      </div>
+
+      <div class="selectors-group">
+        <div class="select-field">
+          <label for="filter-status">Status</label>
+          <select id="filter-status">
+            <option value="all">All</option>
+            <option value="backlog">Backlog</option>
+            <option value="planned">Planned</option>
+            <option value="in_progress">In Progress</option>
+            <option value="released">Released</option>
+          </select>
+        </div>
+
+        <div class="select-field">
+          <label for="filter-priority">Priority</label>
+          <select id="filter-priority">
+            <option value="all">All</option>
+            <option value="high">High</option>
+            <option value="medium">Medium</option>
+            <option value="low">Low</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <!-- Kanban Board Grid -->
+    <section class="kanban-workspace" aria-label="Kanban Roadmap Grid">
+      
+      <!-- Backlog Track -->
+      <div class="kanban-column" data-status="backlog" id="col-backlog">
+        <div class="column-title-bar">
+          <div class="title-details">
+            <span class="status-dot dot-backlog"></span>
+            <h3>Backlog</h3>
+          </div>
+          <span class="column-count-bubble" id="count-backlog">0</span>
+        </div>
+        <div class="cards-list-container" id="cards-backlog">
+          <!-- Cards populated dynamically -->
+        </div>
+      </div>
+
+      <!-- Planned Track -->
+      <div class="kanban-column" data-status="planned" id="col-planned">
+        <div class="column-title-bar">
+          <div class="title-details">
+            <span class="status-dot dot-planned"></span>
+            <h3>Planned</h3>
+          </div>
+          <span class="column-count-bubble" id="count-planned">0</span>
+        </div>
+        <div class="cards-list-container" id="cards-planned">
+          <!-- Cards populated dynamically -->
+        </div>
+      </div>
+
+      <!-- In Progress Track -->
+      <div class="kanban-column" data-status="in_progress" id="col-in_progress">
+        <div class="column-title-bar">
+          <div class="title-details">
+            <span class="status-dot dot-in-progress"></span>
+            <h3>In Progress</h3>
+          </div>
+          <span class="column-count-bubble" id="count-in_progress">0</span>
+        </div>
+        <div class="cards-list-container" id="cards-in_progress">
+          <!-- Cards populated dynamically -->
+        </div>
+      </div>
+
+      <!-- Released Track -->
+      <div class="kanban-column" data-status="released" id="col-released">
+        <div class="column-title-bar">
+          <div class="title-details">
+            <span class="status-dot dot-released"></span>
+            <h3>Released</h3>
+          </div>
+          <span class="column-count-bubble" id="count-released">0</span>
+        </div>
+        <div class="cards-list-container" id="cards-released">
+          <!-- Cards populated dynamically -->
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- Inspector Drawer Modal (Slides in from the right) -->
+  <div class="drawer-backdrop" id="feature-modal-backdrop" style="display: none;">
+    <div class="inspector-drawer" id="feature-modal">
+      <div class="drawer-header">
+        <h3 id="modal-title">Add Feature Idea</h3>
+        <button class="drawer-close-btn" id="close-modal-btn">&times;</button>
+      </div>
+      <form id="feature-form" class="drawer-form">
+        <input type="hidden" id="feature-id">
+
+        <div class="drawer-field">
+          <label for="input-project">Target Project <span class="req">*</span></label>
+          <select id="input-project" required>
+            <!-- Populated dynamically -->
+          </select>
+        </div>
+
+        <div id="new-project-fields" style="display: none; border: 1px dashed var(--border-medium); padding: 0.85rem; border-radius: 8px; margin-bottom: 0.5rem; background-color: var(--border-light); flex-direction: column; gap: 0.75rem;">
+          <h4 style="font-size: 0.75rem; font-weight: 800; text-transform: uppercase; color: var(--text-muted); letter-spacing: 0.05em; margin-bottom: 0.25rem;">New Project Details</h4>
+          <div class="drawer-field">
+            <label for="input-new-project-name">Project Name <span class="req">*</span></label>
+            <input type="text" id="input-new-project-name" placeholder="e.g. LaunchPad AI" autocomplete="off">
+          </div>
+          <div class="drawer-field">
+            <label for="input-new-project-category">Category</label>
+            <input type="text" id="input-new-project-category" placeholder="e.g. AI / Automation" autocomplete="off">
+          </div>
+          <div class="drawer-field">
+            <label for="input-new-project-description">Project Description</label>
+            <textarea id="input-new-project-description" rows="2" placeholder="Briefly describe what this project is..."></textarea>
+          </div>
+        </div>
+        
+        <div class="drawer-field">
+          <label for="input-title">Feature Title <span class="req">*</span></label>
+          <input type="text" id="input-title" placeholder="e.g. Demand Forecasting Charts" required autocomplete="off">
+        </div>
+
+        <div class="drawer-field">
+          <label for="input-description">Description</label>
+          <textarea id="input-description" rows="6" placeholder="Describe what this feature accomplishes, student benefits, and developer requirements..."></textarea>
+        </div>
+
+        <div class="drawer-field">
+          <label for="input-priority">Priority</label>
+          <select id="input-priority">
+            <option value="low">Low</option>
+            <option value="medium" selected>Medium</option>
+            <option value="high">High</option>
+          </select>
+        </div>
+
+        <div class="drawer-field">
+          <label for="input-status">Status</label>
+          <select id="input-status">
+            <option value="backlog" selected>Backlog</option>
+            <option value="planned">Planned</option>
+            <option value="in_progress">In Progress</option>
+            <option value="released">Released</option>
+          </select>
+        </div>
+
+        <div class="drawer-actions">
+          <button type="button" class="btn btn-danger" id="delete-feature-btn" style="display: none; margin-right: auto;">Delete Feature</button>
+          <button type="button" class="btn btn-outline" id="cancel-btn">Cancel</button>
+          <button type="submit" class="btn btn-indigo" id="save-btn">Save Changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Notifications Wrap -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- Main JavaScript File -->
+  <script src="app.js"></script>
+</body>
+</html>
